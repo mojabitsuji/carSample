@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * <pre>
  * サーキットクラスです。
- * Carインターフェースを実装したクラスのインスタンスを{@link carsample.Circuit#MAX_LAYER}台追加することができます
+ * Carインターフェースを実装したクラスのインスタンスを{@link carsample.Circuit#CIRCUIT_LANE_WIDTH}台追加することができます
  * </pre>
  * 
  * @author Shunichi Todoroki
@@ -18,8 +18,8 @@ public class Circuit {
 	/** サーキットレーンの幅 */
 	public static final int CIRCUIT_LANE_WIDTH = 3;
 	/** Carクラスに設定できる最大スピード */
-	private static final long MAX_SPEED = 1000L;
-	/* サーキットを表現するCarクラスが走り回れる背景の文字キャラクタ */
+	public static final long MAX_SPEED = 1000L;
+	/* Carクラスが走り回れる部分を表現するサーキット場の背景文字キャラクタ */
 	private static final char BACKGROUND_CHAR = '.';
 	private final String circuitName;
 	private final int circuitLength;
@@ -50,10 +50,11 @@ public class Circuit {
 	/**
 	 * <pre>
 	 * Carインターフェースを実装したクラスのインスタンスを追加します。
-	 * このインスタンスが保持している台数が{@link carsample.Circuit#MAX_LAYER}の時に
+	 * このインスタンスが保持している台数が{@link carsample.Circuit#CIRCUIT_LANE_WIDTH}の時に
 	 * このメソッドを呼び出すと、引数のcarは追加されず戻り値としてfalseが返されます
-	 * また、Carクラスの文字列表現である{@link Car#getBody()}の配列の大きさが、
-	 * このサーキット場を表すサイズより大きい場合はIllegalArgumentExceptionがスローされます
+	 * また、Carクラスの文字列表現である{@link carsample.Car#getBody()}の配列の大きさが、
+	 * このサーキット場を表すサイズ及びレーン幅より大きい場合はIllegalArgumentExceptionがスローされます
+	 * また、{@link carsample.Car#getSpeed()}は{@link carsample.Circuit#MAX_SPEED}より大きくは設定できません
 	 * </pre>
 	 * 
 	 * @param car Carインターフェースを実装したクラスのインスタンス
@@ -115,7 +116,7 @@ public class Circuit {
 		long start = System.currentTimeMillis();
 		while(true) {
 			//開始から現在までのミリ秒
-			long offset = (System.currentTimeMillis() - start);
+			long offset = System.currentTimeMillis() - start;
 			boolean b = false;
 			for (Long l: moveInterval) {
 				if (offset % l == 0L) {
