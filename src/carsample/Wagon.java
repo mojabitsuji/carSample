@@ -1,21 +1,21 @@
 package carsample;
 
-public class Sedan implements Car {
+public class Wagon implements Car {
 	private final long speed;
 	
-	public Sedan() {
-		this.speed = 7L;
+	public Wagon() {
+		this.speed = 4L;
 	}
 	
-	public Sedan(long speed) {
+	public Wagon(long speed) {
 		this.speed = speed;
 	}
 
 	@Override
 	public char[][] getBody() {
-		String s1 = "   ┌───┐  ";
-		String s2 = "┌──    ──┐";
-		String s3 = "└ ◉    ◉ ┘";
+		String s1 = "╭┉┉┉┉┉┉┉╮  ";
+		String s2 = "┊     □ ╰┉╮";
+		String s3 = "╰┉ⓞ     ⓞ┉╯";
 		char[][] body = {s1.toCharArray(), s2.toCharArray(), s3.toCharArray()};
 		return body;
 	}

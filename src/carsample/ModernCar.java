@@ -4,7 +4,7 @@ public class ModernCar implements Car {
 	private final long speed;
 	
 	public ModernCar() {
-		this.speed = 1L;
+		this.speed = 20L;
 	}
 	
 	public ModernCar(long speed) {
