@@ -85,15 +85,6 @@ public class Circuit {
 									+ bodyLength + "], サーキット場の全長["
 									+ circuitLength + "]");
 				}
-				//マルチバイトチェック？
-				//for (char c : b) {
-				//	String charStr = new String(new char[] { c });
-				//	if (charStr.getBytes().length > 1) {
-				//		throw new IllegalArgumentException(
-				//				"このCarを表現する文字列配列に使用できない文字が含まれています。[" + charStr
-				//						+ "]");
-				//	}
-				//}
 			}
 			if (car.getSpeed() < 1) {
 				throw new IllegalArgumentException(
@@ -129,8 +120,9 @@ public class Circuit {
 			//各車を走らせる
 			int carLaneIdx = 0;
 			for (Car car: cars) {
-				//毎回計算しちゃう
+				//面倒だから毎回計算しちゃう
 				char[][] body = car.getBody();
+				//実際には１段目の文字列の長さで計算しちゃってる
 				int runnnableLength = circuitLength - body[0].length;
 				long mInterval = MAX_SPEED / car.getSpeed();
 				int step = (int)(offset / mInterval);
@@ -166,7 +158,7 @@ public class Circuit {
 	 * というサーキット場の場合戻り値の
 	 * circuitParts[0]に入るのは以下の部分
 	 * ┌───────────────────────┐
-	 * 要素の最初のインデックスで指定できるのが縦であることに注意
+	 * 要素の最初のインデックスで指定できるのがY軸方向であることに注意
 	 */
 	private final char[][] createCircuitParts() {
 		//+2しているのは枠線の分
