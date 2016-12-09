@@ -12,7 +12,7 @@ Carクラスを使ったサンプルプログラムがたいしてないばか�
 
 このプロジェクト直下で以下のコマンドを実行する  
 
-    java -cp carSample carsample.CircuitTest
+    java -cp bin carsample.CircuitTest
 
 
 # このプログラムで伝えたいこと
